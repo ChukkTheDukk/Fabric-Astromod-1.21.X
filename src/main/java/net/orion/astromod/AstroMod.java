@@ -2,6 +2,7 @@ package net.orion.astromod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.orion.astromod.block.ModBlocks;
 import net.orion.astromod.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,5 +14,6 @@ public class AstroMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
