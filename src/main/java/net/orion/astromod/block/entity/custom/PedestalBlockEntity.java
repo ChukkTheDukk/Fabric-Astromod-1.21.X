@@ -27,9 +27,10 @@ public class PedestalBlockEntity extends BlockEntity implements net.orion.astrom
         return inventory;
     }
 
-    public float getRenderingRotation() {
-        rotation += 0.5f;
-        if(rotation >= 360) {
+    public float getRenderingRotation(float degreePerTick) {
+        //1 day = 0.005f
+        rotation += degreePerTick;//(x60)
+        if(rotation >= 360) {//12 seconds
             rotation = 0;
         }
         return rotation;

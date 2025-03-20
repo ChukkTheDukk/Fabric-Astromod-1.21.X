@@ -29,6 +29,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         boolean celestial = false;
+        float degreePerTick = 0.5f;
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = entity.getStack(0);
         ModelTransformationMode modelTransformationMode = ModelTransformationMode.GUI;
@@ -36,10 +37,16 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         if((stack.isOf(ModItems.MOON))||(stack.isOf(ModItems.MERCURY))) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             celestial = true;
+            if(stack.isOf(ModItems.MOON)) {
+                degreePerTick = 0.3f;
+            } else if(stack.isOf(ModItems.MERCURY)) {
+                degreePerTick = 0.2f;
+            }
         } else if(stack.isOf(ModItems.VENUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.NEGATIVE_Y;
             celestial = true;
+            degreePerTick = 0.1f;
         }/** else if(stack.isOf(ModItems.URANUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.POSITIVE_X;
@@ -52,7 +59,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         } else {
             matrices.scale(1f, 1f, 1f);
         }
-        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation()), 0f, 0.1875f, 0f);//replace 0.1875f with either 0.3125f or 0.40625f
+        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation(degreePerTick)), 0f, 0.1875f, 0f);//replace 0.1875f with either 0.3125f or 0.40625f
 
         itemRenderer.renderItem(stack, modelTransformationMode, getLightLevel(entity.getWorld(),
                 entity.getPos()), OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
