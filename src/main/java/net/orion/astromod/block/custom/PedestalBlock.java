@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
@@ -18,8 +19,9 @@ import net.minecraft.world.World;
 import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
-public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider {
+public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider{
     private static final VoxelShape SHAPE = PedestalBlock.createCuboidShape(2,0,2,14,13,14);
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public static final MapCodec<PedestalBlock> CODEC = PedestalBlock.createCodec(PedestalBlock::new);
 

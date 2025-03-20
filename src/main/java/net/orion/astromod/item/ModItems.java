@@ -10,8 +10,8 @@ import net.orion.astromod.AstroMod;
 
 public class ModItems {
 
-    public static final Item MOON = registerItem("moon", new Item(new Item.Settings()));
-    public static final Item MERCURY = registerItem("mercury", new Item(new Item.Settings()));
+    public static final Item MOON = registerItem("moon", new Item(new Item.Settings().maxCount(1)));
+    public static final Item MERCURY = registerItem("mercury", new Item(new Item.Settings().maxCount(1)));
 
 
     private static Item registerItem(String name, Item item) {

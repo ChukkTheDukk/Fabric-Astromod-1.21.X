@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "astromod:block/pedestal"
-    }
+    "": [
+      {
+        "model": "astromod:block/pedestal"
+      },
+      {
+        "model": "astromod:block/pedestal",
+        "y": 90
+      },
+      {
+        "model": "astromod:block/pedestal",
+        "y": 180
+      },
+      {
+        "model": "astromod:block/pedestal",
+        "y": 270
+      }
+    ]
   }
 }
