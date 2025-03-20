@@ -1,5 +1,8 @@
 {
-  "item.astromod.moon": "Moon",
-  "item.astromod.mercury": "Mercury",
-  "block.astromod.lunar_stone": "Lunar Stone"
+  "item.astromod.moon": "§7Moon",
+  "item.astromod.mercury": "§8Mercury",
+  "block.astromod.lunar_stone": "Lunar Stone",
+  "block.astromod.pedestal": "Pedestal",
+  "itemgroup.astromod_item_group": "AstroMod",
+  "itemgroup.astromod_trophy_item_group": "AstroMod Trophies"
 }
