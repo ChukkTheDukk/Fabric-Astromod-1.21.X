@@ -23,12 +23,13 @@ public class ModItemGroups {
 
     public static final ItemGroup ASTROMOD_TROPHY_ITEM_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(AstroMod.MOD_ID, "astromod_trophy_item_group"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.MOON))
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.PEDESTAL))
                     .displayName(Text.translatable("itemgroup.astromod_trophy_item_group"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.PEDESTAL);
                         entries.add(ModItems.MOON);
                         entries.add(ModItems.MERCURY);
+                        entries.add(ModItems.VENUS);
                     })
                     .build());
 

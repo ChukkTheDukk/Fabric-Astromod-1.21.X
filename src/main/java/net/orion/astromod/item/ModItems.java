@@ -12,6 +12,7 @@ public class ModItems {
 
     public static final Item MOON = registerItem("moon", new Item(new Item.Settings().maxCount(1)));
     public static final Item MERCURY = registerItem("mercury", new Item(new Item.Settings().maxCount(1)));
+    public static final Item VENUS = registerItem("venus", new Item(new Item.Settings().maxCount(1)));
 
 
     private static Item registerItem(String name, Item item) {
@@ -22,8 +23,8 @@ public class ModItems {
         AstroMod.LOGGER.info("Registering Mod Items");
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(fabricItemGroupEntries -> {
-            fabricItemGroupEntries.add(MOON);
-            fabricItemGroupEntries.add(MERCURY);
+            //fabricItemGroupEntries.add(MOON);
+            //fabricItemGroupEntries.add(MERCURY);
         });
     }
 }

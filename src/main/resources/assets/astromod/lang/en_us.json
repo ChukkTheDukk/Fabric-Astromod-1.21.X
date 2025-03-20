@@ -1,6 +1,7 @@
 {
-  "item.astromod.moon": "§7Moon",
-  "item.astromod.mercury": "§8Mercury",
+  "item.astromod.moon": "§7Moon §fTrophy",
+  "item.astromod.mercury": "§8Mercury §fTrophy",
+  "item.astromod.venus": "§eVenus §fTrophy",
   "block.astromod.lunar_stone": "Lunar Stone",
   "block.astromod.pedestal": "Pedestal",
   "itemgroup.astromod_item_group": "AstroMod",

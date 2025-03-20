@@ -28,23 +28,31 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+        boolean celestial = false;
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = entity.getStack(0);
         ModelTransformationMode modelTransformationMode = ModelTransformationMode.GUI;
         RotationAxis rotationAxis = RotationAxis.POSITIVE_Y;
-        if((stack.isOf(ModItems.MOON))/**||(stack.isOf(ModItems.MERCURY))*/) {
+        if((stack.isOf(ModItems.MOON))||(stack.isOf(ModItems.MERCURY))) {
             modelTransformationMode = ModelTransformationMode.GROUND;
-        } /**else if(stack.isOf(ModItems.VENUS)) {
+            celestial = true;
+        } else if(stack.isOf(ModItems.VENUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.NEGATIVE_Y;
-        }*/ else if(stack.isOf(ModItems.MERCURY)) {//uranus
+            celestial = true;
+        }/** else if(stack.isOf(ModItems.URANUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.POSITIVE_X;
-        }
+            celestial = true;
+        }*/
         matrices.push();
         matrices.translate(0.5f, 1.15f, 0.5f);
-        matrices.scale(0.5f, 0.5f, 0.5f);
-        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation()));
+        if (!celestial) {
+            matrices.scale(0.5f, 0.5f, 0.5f);
+        } else {
+            matrices.scale(1f, 1f, 1f);
+        }
+        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation()), 0f, 0.1875f, 0f);//replace 0.1875f with either 0.3125f or 0.40625f
 
         itemRenderer.renderItem(stack, modelTransformationMode, getLightLevel(entity.getWorld(),
                 entity.getPos()), OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
