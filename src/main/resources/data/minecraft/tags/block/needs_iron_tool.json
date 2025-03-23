@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "astromod:lunar_stone"
+    "astromod:lunar_stone",
+    "astromod:celestial_pedestal"
   ]
 }

@@ -2,8 +2,10 @@
   "item.astromod.moon": "§7Moon §fTrophy",
   "item.astromod.mercury": "§8Mercury §fTrophy",
   "item.astromod.venus": "§eVenus §fTrophy",
+  "item.astromod.celestial_ingot": "Celestial Ingot",
   "block.astromod.lunar_stone": "Lunar Stone",
   "block.astromod.pedestal": "Pedestal",
+  "block.astromod.celestial_pedestal": "Celestial Pedestal",
   "itemgroup.astromod_item_group": "AstroMod",
   "itemgroup.astromod_trophy_item_group": "AstroMod Trophies"
 }

@@ -10,5 +10,6 @@ public class AstroModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockEntityRendererFactories.register(ModBlockEntities.PEDESTAL_BE, PedestalBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.PEDESTAL_CE, PedestalBlockEntityRenderer::new);
     }
 }

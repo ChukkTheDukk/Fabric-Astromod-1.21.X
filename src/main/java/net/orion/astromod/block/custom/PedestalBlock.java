@@ -3,6 +3,7 @@ package net.orion.astromod.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -12,16 +13,18 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.orion.astromod.block.ModBlocks;
 import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
+import net.orion.astromod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider{
     private static final VoxelShape SHAPE = PedestalBlock.createCuboidShape(2,0,2,14,13,14);
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public static final MapCodec<PedestalBlock> CODEC = PedestalBlock.createCodec(PedestalBlock::new);
 
@@ -64,22 +67,41 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if(world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-            if(pedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
-                pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
-                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
-                stack.decrement(1);
-                pedestalBlockEntity.markDirty();
-                world.updateListeners(pos, state, state, 0);
-            } else if(stack.isEmpty() && !player.isSneaking()) {
-                ItemStack stackOnPedestal = pedestalBlockEntity.getStack(0);
-                player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
-                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-                pedestalBlockEntity.clear();
-                pedestalBlockEntity.markDirty();
-                world.updateListeners(pos, state, state, 0);
+            if(world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
+                Block block = null;
+                if(MinecraftClient.getInstance().crosshairTarget.getType() == HitResult.Type.BLOCK) {
+                    BlockHitResult blockHitResult = (BlockHitResult) MinecraftClient.getInstance().crosshairTarget;
+                    block = MinecraftClient.getInstance().world.getBlockState(blockHitResult.getBlockPos()).getBlock();
+                    System.out.println(block);
+                }
+                if(pedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
+                    if(block == ModBlocks.PEDESTAL) {
+                        if ((!stack.isOf(ModItems.MOON)) && (!stack.isOf(ModItems.MERCURY)) && (!stack.isOf(ModItems.VENUS))) {
+                            pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
+                            world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
+                            stack.decrement(1);
+                            pedestalBlockEntity.markDirty();
+                            world.updateListeners(pos, state, state, 0);
+                        }
+                    } else if(block == ModBlocks.CELESTIAL_PEDESTAL){
+                        if ((stack.isOf(ModItems.MOON)) || (stack.isOf(ModItems.MERCURY)) || (stack.isOf(ModItems.VENUS))) {
+                            pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
+                            world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
+                            stack.decrement(1);
+                            pedestalBlockEntity.markDirty();
+                            world.updateListeners(pos, state, state, 0);
+                        }
+                    }
+                } else if(stack.isEmpty() && !player.isSneaking()) {
+                    ItemStack stackOnPedestal = pedestalBlockEntity.getStack(0);
+                    player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
+                    world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
+                    pedestalBlockEntity.clear();
+                    pedestalBlockEntity.markDirty();
+                    world.updateListeners(pos, state, state, 0);
+                }
             }
-        }
         return ItemActionResult.SUCCESS;
+        }
     }
-}
+

@@ -17,6 +17,7 @@ public class ModItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.LUNAR_STONE))
                     .displayName(Text.translatable("itemgroup.astromod_item_group"))
                     .entries((displayContext, entries) -> {
+                        entries.add(ModItems.CELESTIAL_INGOT);
                         entries.add(ModBlocks.LUNAR_STONE);
                     })
                     .build());
@@ -27,6 +28,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.astromod_trophy_item_group"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.PEDESTAL);
+                        entries.add(ModBlocks.CELESTIAL_PEDESTAL);
                         entries.add(ModItems.MOON);
                         entries.add(ModItems.MERCURY);
                         entries.add(ModItems.VENUS);

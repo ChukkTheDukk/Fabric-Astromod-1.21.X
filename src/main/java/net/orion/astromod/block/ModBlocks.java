@@ -20,6 +20,9 @@ public class ModBlocks {
 
     public static final Block PEDESTAL = registerBlock("pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
+    public static final Block CELESTIAL_PEDESTAL = registerBlock("celestial_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

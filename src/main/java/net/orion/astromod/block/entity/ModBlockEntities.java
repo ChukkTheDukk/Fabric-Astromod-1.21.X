@@ -13,6 +13,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AstroMod.MOD_ID, "pedestal_be"),
                     BlockEntityType.Builder.create(PedestalBlockEntity::new, ModBlocks.PEDESTAL).build(null));
 
+    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_CE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AstroMod.MOD_ID, "pedestal_ce"),
+                    BlockEntityType.Builder.create(PedestalBlockEntity::new, ModBlocks.CELESTIAL_PEDESTAL).build(null));
+
     public static void registerBlockEntities() {
         AstroMod.LOGGER.info("Registering Mod Block Entities");
     }
