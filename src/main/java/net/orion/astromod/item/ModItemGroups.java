@@ -34,6 +34,12 @@ public class ModItemGroups {
                         entries.add(ModItems.MERCURY);
                         entries.add(ModItems.VENUS);
                         entries.add(ModItems.EARTH);
+                        entries.add(ModItems.MARS);
+                        entries.add(ModItems.JUPITER);
+                        entries.add(ModItems.SATURN);
+                        entries.add(ModItems.URANUS);
+                        entries.add(ModItems.NEPTUNE);
+                        entries.add(ModItems.SUN);
                     })
                     .build());
 

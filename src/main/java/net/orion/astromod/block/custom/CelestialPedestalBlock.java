@@ -66,7 +66,6 @@ public class CelestialPedestalBlock extends BlockWithEntity implements BlockEnti
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
             if(world.getBlockEntity(pos) instanceof CelestialPedestalBlockEntity celestialPedestalBlockEntity) {
                 if(celestialPedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
-                    //if ((stack.isOf(ModItems.MOON)) || (stack.isOf(ModItems.MERCURY)) || (stack.isOf(ModItems.VENUS))) {
                     if (stack.isIn(ModTags.Items.CELESTIAL_OBJECTS)) {
                         celestialPedestalBlockEntity.setStack(0, stack.copyWithCount(1));
                         world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);

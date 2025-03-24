@@ -3,6 +3,12 @@
     "astromod:moon",
     "astromod:mercury",
     "astromod:venus",
-    "astromod:earth"
+    "astromod:earth",
+    "astromod:mars",
+    "astromod:jupiter",
+    "astromod:saturn",
+    "astromod:uranus",
+    "astromod:neptune",
+    "astromod:sun"
   ]
 }

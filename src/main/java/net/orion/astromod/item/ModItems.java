@@ -15,6 +15,13 @@ public class ModItems {
     public static final Item MERCURY = registerItem("mercury", new Item(new Item.Settings().maxCount(1)));
     public static final Item VENUS = registerItem("venus", new Item(new Item.Settings().maxCount(1)));
     public static final Item EARTH = registerItem("earth", new Item(new Item.Settings().maxCount(1)));
+    public static final Item MARS = registerItem("mars", new Item(new Item.Settings().maxCount(1)));
+    public static final Item JUPITER = registerItem("jupiter", new Item(new Item.Settings().maxCount(1)));
+    public static final Item SATURN = registerItem("saturn", new Item(new Item.Settings().maxCount(1)));
+    public static final Item URANUS = registerItem("uranus", new Item(new Item.Settings().maxCount(1)));
+    public static final Item NEPTUNE = registerItem("neptune", new Item(new Item.Settings().maxCount(1)));
+    public static final Item SUN = registerItem("sun", new Item(new Item.Settings().maxCount(1)));
+
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(AstroMod.MOD_ID, name), item);
