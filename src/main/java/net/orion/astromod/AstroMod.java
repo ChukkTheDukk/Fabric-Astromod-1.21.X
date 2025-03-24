@@ -2,6 +2,8 @@ package net.orion.astromod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.minecraft.util.Identifier;
 import net.orion.astromod.block.ModBlocks;
 import net.orion.astromod.block.entity.ModBlockEntities;
 import net.orion.astromod.item.ModItemGroups;
@@ -26,5 +28,12 @@ public class AstroMod implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 
 		ModRecipes.registerRecipes();
+
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(ModBlocks.LUNAR_STONE)
+				.lightWithItem(ModItems.CELESTIAL_INGOT)
+				.destDimID(Identifier.of(AstroMod.MOD_ID, "moondim"))
+				.tintColor(11184810)
+				.registerPortal();
 	}
 }

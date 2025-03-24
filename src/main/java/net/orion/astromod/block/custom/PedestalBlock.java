@@ -18,6 +18,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
 import net.orion.astromod.item.ModItems;
+import net.orion.astromod.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider{
@@ -66,7 +67,8 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
             if(world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
                 if(pedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
-                    if ((!stack.isOf(ModItems.MOON)) && (!stack.isOf(ModItems.MERCURY)) && (!stack.isOf(ModItems.VENUS))) {
+                    //if ((!stack.isOf(ModItems.MOON)) && (!stack.isOf(ModItems.MERCURY)) && (!stack.isOf(ModItems.VENUS))) {
+                    if (!stack.isIn(ModTags.Items.CELESTIAL_OBJECTS)) {
                         pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
                         world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
                         stack.decrement(1);
