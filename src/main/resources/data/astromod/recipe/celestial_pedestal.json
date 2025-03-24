@@ -1,0 +1,13 @@
+{
+  "type": "astromod:celestial_forge",
+  "ingredient": {
+    "item": "astromod:pedestal"
+  },
+  "ingredient2": {
+    "item": "astromod:celestial_ingot"
+  },
+  "result": {
+    "count": 1,
+    "id": "astromod:celestial_pedestal"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astromod:block/celestial_forge"
+    }
+  }
+}

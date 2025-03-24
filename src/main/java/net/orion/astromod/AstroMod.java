@@ -6,6 +6,8 @@ import net.orion.astromod.block.ModBlocks;
 import net.orion.astromod.block.entity.ModBlockEntities;
 import net.orion.astromod.item.ModItemGroups;
 import net.orion.astromod.item.ModItems;
+import net.orion.astromod.recipe.ModRecipes;
+import net.orion.astromod.screen.ModScreenHandlers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,5 +23,8 @@ public class AstroMod implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
+
+		ModRecipes.registerRecipes();
 	}
 }

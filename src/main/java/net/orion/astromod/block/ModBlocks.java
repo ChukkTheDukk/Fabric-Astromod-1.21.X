@@ -11,6 +11,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.orion.astromod.AstroMod;
+import net.orion.astromod.block.custom.CelestialForgeBlock;
 import net.orion.astromod.block.custom.CelestialPedestalBlock;
 import net.orion.astromod.block.custom.PedestalBlock;
 
@@ -24,6 +25,9 @@ public class ModBlocks {
     public static final Block CELESTIAL_PEDESTAL = registerBlock("celestial_pedestal",
             new CelestialPedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
 
+
+    public static final Block CELESTIAL_FORGE = registerBlock("celestial_forge",
+            new CelestialForgeBlock(AbstractBlock.Settings.create()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
