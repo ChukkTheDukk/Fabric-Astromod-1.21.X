@@ -40,20 +40,7 @@ public class CelestialPedestalBlockEntityRenderer implements BlockEntityRenderer
         } else if(stack.isOf(ModItems.EARTH)) {
             degreePerTick = 0.5f;
         }
-        /**if((stack.isOf(ModItems.MOON))||(stack.isOf(ModItems.MERCURY))) {
-            modelTransformationMode = ModelTransformationMode.GROUND;
-            if(stack.isOf(ModItems.MOON)) {
-                degreePerTick = 0.3f;
-            } else if(stack.isOf(ModItems.MERCURY)) {
-                degreePerTick = 0.2f;
-            } else if(stack.isOf(ModItems.EARTH)) {
-                degreePerTick = 0.5f;
-            }
-        } else if(stack.isOf(ModItems.VENUS)) {
-            modelTransformationMode = ModelTransformationMode.GROUND;
-            rotationAxis = RotationAxis.NEGATIVE_Y;
-            degreePerTick = 0.1f;
-        }*//** else if(stack.isOf(ModItems.URANUS)) {
+       /** else if(stack.isOf(ModItems.URANUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.POSITIVE_X;
             celestial = true;
