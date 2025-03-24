@@ -25,23 +25,35 @@ public class CelestialPedestalBlockEntityRenderer implements BlockEntityRenderer
 
     @Override
     public void render(CelestialPedestalBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        float degreePerTick = 0.5f;
+        float degreePerTick = 0f;
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = entity.getStack(0);
-        ModelTransformationMode modelTransformationMode = ModelTransformationMode.GUI;
+        ModelTransformationMode modelTransformationMode = ModelTransformationMode.GROUND;
         RotationAxis rotationAxis = RotationAxis.POSITIVE_Y;
-        if((stack.isOf(ModItems.MOON))||(stack.isOf(ModItems.MERCURY))) {
+        if(stack.isOf(ModItems.MOON)) {
+            degreePerTick = 0.3f;
+        } else if(stack.isOf(ModItems.MERCURY)) {
+            degreePerTick = 0.2f;
+        } else if(stack.isOf(ModItems.VENUS)) {
+            rotationAxis = RotationAxis.NEGATIVE_Y;
+            degreePerTick = 0.1f;
+        } else if(stack.isOf(ModItems.EARTH)) {
+            degreePerTick = 0.5f;
+        }
+        /**if((stack.isOf(ModItems.MOON))||(stack.isOf(ModItems.MERCURY))) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             if(stack.isOf(ModItems.MOON)) {
                 degreePerTick = 0.3f;
             } else if(stack.isOf(ModItems.MERCURY)) {
                 degreePerTick = 0.2f;
+            } else if(stack.isOf(ModItems.EARTH)) {
+                degreePerTick = 0.5f;
             }
         } else if(stack.isOf(ModItems.VENUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.NEGATIVE_Y;
             degreePerTick = 0.1f;
-        }/** else if(stack.isOf(ModItems.URANUS)) {
+        }*//** else if(stack.isOf(ModItems.URANUS)) {
             modelTransformationMode = ModelTransformationMode.GROUND;
             rotationAxis = RotationAxis.POSITIVE_X;
             celestial = true;
