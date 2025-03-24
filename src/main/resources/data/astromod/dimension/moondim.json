@@ -17,8 +17,8 @@
       "noise": {
         "min_y": -64,
         "height": 64,
-        "size_horizontal": 1,
-        "size_vertical": 1
+        "size_horizontal": 4,
+        "size_vertical": 4
       },
       "noise_router": {
         "barrier": "minecraft:zero",
@@ -30,12 +30,12 @@
         "vein_gap": 0,
         "temperature": 0.5,
         "vegetation": 0,
-        "continents": 0.5,
-        "erosion": 0.1,
-        "depth": 5,
-        "ridges": 8,
-        "initial_density_without_jaggedness": 5,
-        "final_density": 5
+        "continents": 0.6,
+        "erosion": 0.4,
+        "depth": 8,
+        "ridges": 12,
+        "initial_density_without_jaggedness": 6,
+        "final_density": 6
       },
       "spawn_target": [],
       "surface_rule": {
