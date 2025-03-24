@@ -14,7 +14,7 @@ public class ModItems {
     public static final Item MOON = registerItem("moon", new Item(new Item.Settings().maxCount(1)));
     public static final Item MERCURY = registerItem("mercury", new Item(new Item.Settings().maxCount(1)));
     public static final Item VENUS = registerItem("venus", new Item(new Item.Settings().maxCount(1)));
-
+    public static final Item EARTH = registerItem("earth", new Item(new Item.Settings().maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(AstroMod.MOD_ID, name), item);

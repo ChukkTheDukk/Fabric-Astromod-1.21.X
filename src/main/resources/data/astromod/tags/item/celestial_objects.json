@@ -2,6 +2,7 @@
   "values": [
     "astromod:moon",
     "astromod:mercury",
-    "astromod:venus"
+    "astromod:venus",
+    "astromod:earth"
   ]
 }
