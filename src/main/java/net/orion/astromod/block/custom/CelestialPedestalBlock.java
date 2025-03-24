@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -16,16 +15,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
+import net.orion.astromod.block.entity.custom.CelestialPedestalBlockEntity;
 import net.orion.astromod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
-public class PedestalBlock extends BlockWithEntity implements BlockEntityProvider{
-    private static final VoxelShape SHAPE = PedestalBlock.createCuboidShape(2,0,2,14,13,14);
+public class CelestialPedestalBlock extends BlockWithEntity implements BlockEntityProvider{
+    private static final VoxelShape SHAPE = CelestialPedestalBlock.createCuboidShape(1.5,0,1.5,14.5,13,14.5);
 
-    public static final MapCodec<PedestalBlock> CODEC = PedestalBlock.createCodec(PedestalBlock::new);
+    public static final MapCodec<CelestialPedestalBlock> CODEC = CelestialPedestalBlock.createCodec(CelestialPedestalBlock::new);
 
-    public PedestalBlock(Settings settings) {
+    public CelestialPedestalBlock(Settings settings) {
         super(settings);
     }
 
@@ -42,7 +41,7 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new PedestalBlockEntity(pos, state);
+        return new CelestialPedestalBlockEntity(pos, state);
     }
 
     @Override
@@ -54,8 +53,8 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if(state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof PedestalBlockEntity) {
-                ItemScatterer.spawn(world, pos, ((PedestalBlockEntity) blockEntity));
+            if(blockEntity instanceof CelestialPedestalBlockEntity) {
+                ItemScatterer.spawn(world, pos, ((CelestialPedestalBlockEntity) blockEntity));
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -64,21 +63,21 @@ public class PedestalBlock extends BlockWithEntity implements BlockEntityProvide
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-            if(world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-                if(pedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
-                    if ((!stack.isOf(ModItems.MOON)) && (!stack.isOf(ModItems.MERCURY)) && (!stack.isOf(ModItems.VENUS))) {
-                        pedestalBlockEntity.setStack(0, stack.copyWithCount(1));
+            if(world.getBlockEntity(pos) instanceof CelestialPedestalBlockEntity celestialPedestalBlockEntity) {
+                if(celestialPedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
+                    if ((stack.isOf(ModItems.MOON)) || (stack.isOf(ModItems.MERCURY)) || (stack.isOf(ModItems.VENUS))) {
+                        celestialPedestalBlockEntity.setStack(0, stack.copyWithCount(1));
                         world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
                         stack.decrement(1);
-                        pedestalBlockEntity.markDirty();
+                        celestialPedestalBlockEntity.markDirty();
                         world.updateListeners(pos, state, state, 0);
                     }
                 } else if(stack.isEmpty() && !player.isSneaking()) {
-                    ItemStack stackOnPedestal = pedestalBlockEntity.getStack(0);
+                    ItemStack stackOnPedestal = celestialPedestalBlockEntity.getStack(0);
                     player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
                     world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-                    pedestalBlockEntity.clear();
-                    pedestalBlockEntity.markDirty();
+                    celestialPedestalBlockEntity.clear();
+                    celestialPedestalBlockEntity.markDirty();
                     world.updateListeners(pos, state, state, 0);
                 }
             }

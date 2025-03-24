@@ -6,6 +6,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.orion.astromod.AstroMod;
 import net.orion.astromod.block.ModBlocks;
+import net.orion.astromod.block.entity.custom.CelestialPedestalBlockEntity;
 import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
 
 public class ModBlockEntities {
@@ -13,9 +14,9 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AstroMod.MOD_ID, "pedestal_be"),
                     BlockEntityType.Builder.create(PedestalBlockEntity::new, ModBlocks.PEDESTAL).build(null));
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_CE =
+    public static final BlockEntityType<CelestialPedestalBlockEntity> PEDESTAL_CE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AstroMod.MOD_ID, "pedestal_ce"),
-                    BlockEntityType.Builder.create(PedestalBlockEntity::new, ModBlocks.CELESTIAL_PEDESTAL).build(null));
+                    BlockEntityType.Builder.create(CelestialPedestalBlockEntity::new, ModBlocks.CELESTIAL_PEDESTAL).build(null));
 
     public static void registerBlockEntities() {
         AstroMod.LOGGER.info("Registering Mod Block Entities");

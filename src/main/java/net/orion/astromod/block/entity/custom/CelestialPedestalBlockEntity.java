@@ -14,12 +14,12 @@ import net.minecraft.util.math.BlockPos;
 import net.orion.astromod.block.entity.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
-public class PedestalBlockEntity extends BlockEntity implements net.orion.astromod.block.entity.custom.ImplementedInventory {
+public class CelestialPedestalBlockEntity extends BlockEntity implements net.orion.astromod.block.entity.custom.ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     private float rotation = 0;
 
-    public PedestalBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PEDESTAL_BE, pos, state);
+    public CelestialPedestalBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.PEDESTAL_CE, pos, state);
     }
 
     @Override
