@@ -7,6 +7,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
@@ -22,7 +24,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class CelestialPedestalBlock extends BlockWithEntity implements BlockEntityProvider{
     private static final VoxelShape SHAPE = CelestialPedestalBlock.createCuboidShape(1.5,0,1.5,14.5,13,14.5);
-
     public static final MapCodec<CelestialPedestalBlock> CODEC = CelestialPedestalBlock.createCodec(CelestialPedestalBlock::new);
 
     public CelestialPedestalBlock(Settings settings) {

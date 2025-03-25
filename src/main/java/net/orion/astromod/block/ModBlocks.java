@@ -3,6 +3,7 @@ package net.orion.astromod.block;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -14,6 +15,8 @@ import net.orion.astromod.AstroMod;
 import net.orion.astromod.block.custom.CelestialForgeBlock;
 import net.orion.astromod.block.custom.CelestialPedestalBlock;
 import net.orion.astromod.block.custom.PedestalBlock;
+
+import java.util.function.ToIntFunction;
 
 public class ModBlocks {
 

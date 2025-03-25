@@ -55,8 +55,8 @@ public class CelestialPedestalBlockEntityRenderer implements BlockEntityRenderer
         }
         matrices.push();
         matrices.translate(0.5f, 1.15f, 0.5f);
-        matrices.scale(1f, 1f, 1f);
-        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation(degreePerTick)), 0f, 0.40625f, 0f);//replace 0.1875f with either 0.3125f or 0.40625f
+        matrices.scale(1.5f, 1.5f, 1.5f);
+        matrices.multiply(rotationAxis.rotationDegrees(entity.getRenderingRotation(degreePerTick)), 0f, 0.1875f, 0f);//replace 0.1875f with either 0.3125f or 0.40625f
 
         itemRenderer.renderItem(stack, modelTransformationMode, getLightLevel(entity.getWorld(),
                 entity.getPos()), OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
