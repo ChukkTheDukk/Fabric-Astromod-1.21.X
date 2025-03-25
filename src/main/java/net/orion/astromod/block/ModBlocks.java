@@ -26,7 +26,7 @@ public class ModBlocks {
     public static final Block PEDESTAL = registerBlock("pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
     public static final Block CELESTIAL_PEDESTAL = registerBlock("celestial_pedestal",
-            new CelestialPedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
+            new CelestialPedestalBlock(AbstractBlock.Settings.create().nonOpaque().luminance(value -> 10)));
 
 
     public static final Block CELESTIAL_FORGE = registerBlock("celestial_forge",
