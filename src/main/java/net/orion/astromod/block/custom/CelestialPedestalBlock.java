@@ -7,6 +7,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
@@ -22,9 +24,11 @@ import org.jetbrains.annotations.Nullable;
 public class CelestialPedestalBlock extends BlockWithEntity implements BlockEntityProvider{
     private static final VoxelShape SHAPE = CelestialPedestalBlock.createCuboidShape(1.5,0,1.5,14.5,13,14.5);
     public static final MapCodec<CelestialPedestalBlock> CODEC = CelestialPedestalBlock.createCodec(CelestialPedestalBlock::new);
+    public static final BooleanProperty LIT = BooleanProperty.of("lit");
 
     public CelestialPedestalBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.getDefaultState().with(LIT, false));
     }
 
     @Override
@@ -61,6 +65,11 @@ public class CelestialPedestalBlock extends BlockWithEntity implements BlockEnti
     }
 
     @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(LIT);
+    }
+
+    @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
             if(world.getBlockEntity(pos) instanceof CelestialPedestalBlockEntity celestialPedestalBlockEntity) {
                 if(celestialPedestalBlockEntity.isEmpty() && !stack.isEmpty()) {
@@ -68,6 +77,7 @@ public class CelestialPedestalBlock extends BlockWithEntity implements BlockEnti
                         celestialPedestalBlockEntity.setStack(0, stack.copyWithCount(1));
                         world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
                         stack.decrement(1);
+                        world.setBlockState(pos, state.with(LIT, true));
                         celestialPedestalBlockEntity.markDirty();
                         world.updateListeners(pos, state, state, 0);
                     }
@@ -76,11 +86,12 @@ public class CelestialPedestalBlock extends BlockWithEntity implements BlockEnti
                     player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
                     world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
                     celestialPedestalBlockEntity.clear();
+                    world.setBlockState(pos, state.with(LIT, false));
                     celestialPedestalBlockEntity.markDirty();
                     world.updateListeners(pos, state, state, 0);
                 }
             }
-        return ItemActionResult.SUCCESS;
+            return ItemActionResult.SUCCESS;
         }
 }
 

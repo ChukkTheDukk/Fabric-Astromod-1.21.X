@@ -9,6 +9,8 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.orion.astromod.AstroMod;
 import net.orion.astromod.block.custom.CelestialForgeBlock;
@@ -23,7 +25,7 @@ public class ModBlocks {
     public static final Block PEDESTAL = registerBlock("pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().nonOpaque()));
     public static final Block CELESTIAL_PEDESTAL = registerBlock("celestial_pedestal",
-            new CelestialPedestalBlock(AbstractBlock.Settings.create().nonOpaque().luminance(value -> 10)));
+            new CelestialPedestalBlock(AbstractBlock.Settings.create().nonOpaque().luminance(state -> state.get(CelestialPedestalBlock.LIT) ? 10 : 0)));
 
 
     public static final Block CELESTIAL_FORGE = registerBlock("celestial_forge",
