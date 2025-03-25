@@ -15,7 +15,6 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.orion.astromod.block.entity.custom.CelestialPedestalBlockEntity;
-import net.orion.astromod.block.entity.custom.PedestalBlockEntity;
 import net.orion.astromod.item.ModItems;
 
 public class CelestialPedestalBlockEntityRenderer implements BlockEntityRenderer<CelestialPedestalBlockEntity> {

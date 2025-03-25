@@ -1,14 +1,11 @@
 package net.orion.astromod.block.entity.custom;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -23,9 +20,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.orion.astromod.block.ModBlocks;
 import net.orion.astromod.block.entity.ModBlockEntities;
-import net.orion.astromod.item.ModItems;
 import net.orion.astromod.recipe.CelestialForgeRecipe;
 import net.orion.astromod.recipe.CelestialForgeRecipeInput;
 import net.orion.astromod.recipe.ModRecipes;
